@@ -1,6 +1,6 @@
 package com.stackroute;
 
-import com.stackroute.domain.HelloWorld;
+import com.stackroute.domain.Movie;
 import org.springframework.beans.factory.BeanFactory;
 import org.springframework.beans.factory.support.BeanDefinitionReader;
 import org.springframework.beans.factory.support.BeanDefinitionRegistry;
@@ -13,22 +13,22 @@ import org.springframework.core.io.ClassPathResource;
 
 public class Main {
     public static void main(String[] args){;
-        HelloWorld helloWorld=new HelloWorld();
-        System.out.println(helloWorld.getMessage());
+         Movie movie = new Movie();
+        System.out.println(movie.getMessage());
 
         BeanFactory beanFactory=new XmlBeanFactory(new ClassPathResource("beans.xml"));
-        HelloWorld helloWorld1=(HelloWorld) beanFactory.getBean("helloWorld");
-        System.out.println(helloWorld1.getMessage());
+        Movie movie1=(Movie) beanFactory.getBean("movie");
+        System.out.println(movie1.getMessage());
 
         BeanDefinitionRegistry beanDefinitionRegistry=new DefaultListableBeanFactory();
         BeanDefinitionReader beanDefinitionReader=new XmlBeanDefinitionReader(beanDefinitionRegistry);
         beanDefinitionReader.loadBeanDefinitions(new ClassPathResource("beans.xml"));
-        HelloWorld helloWorld2=((DefaultListableBeanFactory) beanDefinitionRegistry).getBean(HelloWorld.class);
-        System.out.println(helloWorld2.getMessage());
+        Movie movie2=((DefaultListableBeanFactory) beanDefinitionRegistry).getBean(Movie.class);
+        System.out.println(movie2.getMessage());
 
         ApplicationContext context=new ClassPathXmlApplicationContext("beans.xml");
-        HelloWorld helloWorld3=context.getBean(HelloWorld.class);
-        System.out.println(helloWorld3.getMessage());
+        Movie movie3=context.getBean(Movie.class);
+        System.out.println(movie3.getMessage());
 
 
 
